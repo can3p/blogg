@@ -67,6 +67,24 @@ $ pipenv run python3 manage.py migrate
 $ pipenv run python3 manage.py runserver
 ~~~
 
+## Adding user
+
+Blogg is set up using pipenv, so we'll use it to get into proper virtual
+environment and then we'll jump recursively into another shell, python this time,
+to create new user.
+
+~~~bash
+$ pipenv shell
+$ python manage.py shell
+Python 3.5.2 (default, Nov 23 2017, 16:37:01) 
+[GCC 5.4.0 20160609] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from web.models import User
+>>> user = User.objects.create_user('john', 'john.doe@a.com', 'test1234')
+~~~
+
+
 ## Notes
 
 Just in case you forgot, you can get to `pgsql` shell using:
@@ -81,6 +99,7 @@ And small cheatsheet:
 * `\c <db>` - switch to database `<db>`
 * `\dt` - show all tables in the active database
 * `\d <table>` describe table
+* every statement *should* end with semicolon. If your statement do not work, this is why.
 
 [mozilla]: https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/development_environment
 [do]: https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-16-04
