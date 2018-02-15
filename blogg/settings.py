@@ -29,6 +29,8 @@ DEBUG = config('DEBUG', cast=bool)
 ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'web.User'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 
 # Application definition
