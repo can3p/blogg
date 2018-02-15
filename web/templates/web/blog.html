@@ -1,12 +1,11 @@
 {% extends "base.html" %}
-{% load app_filters %}
 
 {% block content %}
 
 <div class="container stripe">
   <div class="site-heading">
     <h1 class="site-heading__heading">
-      World's best blog platform, no jokes
+      {{ blog_username }}
     </h1>
   </div>
 </div>
@@ -19,3 +18,4 @@
 {% endfor %}
 
 {% endblock %}
+

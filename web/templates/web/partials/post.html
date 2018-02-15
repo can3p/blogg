@@ -1,0 +1,15 @@
+{% load app_filters %}
+
+<div class="publication">
+  <h2 class="publication__title">
+    {{ publication.content.title }}
+  </h2>
+  <div class="publication__info">
+    {{ publication.effective_pub_date }} by {{ publication.author }}
+    <a href="{% url 'publication' username=publication.author.username publication_id=publication.id %}" class="link">Permalink</a>
+  </div>
+  <div class="publication__text">
+    {{ publication.content.post|markdownyfy }}
+  </div>
+</div>
+
