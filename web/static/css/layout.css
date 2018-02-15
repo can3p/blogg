@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  list-style-type: none;
+  color: #333;
+}
+
+a {
+  color: #333;
+}
+
+
+.link {
+  color: #996633;
+  text-decoration: underline;
+}
+
+.stripe {
+  clear: both;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.navigation-header {
+  padding: 20px 10px;
+  background-color: #efefef;
+}
+
+.navigation-header__greating,
+.navigation-header__menu {
+  display: inline-block;
+  margin: 0 40px;
+}
+
+.site-heading {
+  margin: 30px 0 30px 100px;
+}
+
+.site-heading__heading {
+  font-size: 30px;
+}
+
+.publication {
+  margin: 50px;
+  border-bottom: 1px solid #eee;
+}
+
+.publication__title {
+  font-size: 20px;
+}
+
+.publication__info {
+  margin-top: 10px;
+  font-style: italic;
+  color: #999;
+  font-size: 12px;
+}
+
+.publication__text {
+  padding: 20px 0;
+}
+
+/* markdown styling */
+
+.publication__text h1 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.publication__text h2 {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.publication__text h3 {
+  font-weight: bold;
+}
+
+.publication__text p {
+  margin: 10px 0;
+}
+
+.publication__text em {
+  font-style: italic;
+}
+
+/* update form */
+
+.update-form {
+  padding: 0 50px;
+}
+
+.update-form__group {
+  margin: 20px 0;
+}

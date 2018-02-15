@@ -2,21 +2,31 @@
 
 {% block content %}
 
-<h1>New post</h1>
+<div class="container stripe">
+  <div class="site-heading">
+    <h1 class="site-heading__heading">
+      New post
+    </h1>
+  </div>
+</div>
 
-<form method="post" action="{% url 'update' %}">
-  {% csrf_token %}
-  <div>
-    <input name="title" style="width: 100%;" placeholder="Title goes there" />
+<div class="stripe container">
+  <div class="update-form">
+    <form method="post" action="{% url 'update' %}">
+      {% csrf_token %}
+      <div class="update-form__group">
+        <input name="title" style="width: 100%;" placeholder="Title goes there" />
+      </div>
+      <div class="update-form__group">
+        <textarea name="post" rows="20" style="width: 100%"
+          placeholder="Text goes there"></textarea>
+      </div>
+      <div class="update-form__group">
+        <input type="submit" value="Press me" />
+      </div>
+    </form>
   </div>
-  <div>
-    <textarea name="post" rows="30" style="width: 100%"
-      placeholder="Text goes there"></textarea>
-  </div>
-  <div>
-    <input type="submit" value="Press me" />
-  </div>
-</form>
+</div>
 
 {% endblock %}
 

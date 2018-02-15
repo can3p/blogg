@@ -1,10 +1,28 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Blogg</title>
+  <link rel="stylesheet" href="{% static 'css/layout.css' %}">
 </head>
 <body>
+  <div class="stripe container">
+    <div class="navigation-header">
+      <div class="navigation-header__greating">
+        {% if user.is_authenticated %}
+         Hello, {{ user.username }}! Want to <a class="link" href="{% url 'logout' %}">logout</a>?
+        {% else %}
+         Hello, Anonymous! Want to <a class="link" href="{% url 'login' %}">login</a>?
+        {% endif %}
+      </div>
+      <div class="navigation-header__menu">
+        {% if user.is_authenticated %}
+        <a class="link" href="{% url 'update' %}">Write something</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
   {% block content %}
   {% endblock %}
 </body>
