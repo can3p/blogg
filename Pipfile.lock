@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "d12581a5c2a47b0b4a809641aceb75d1853462142d5f2112be8a3cb90e473712"
+            "sha256": "96a9e3cb06c65b764f70005c2f0056dbd53d4a779db39821ce4d9464ca998f53"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
@@ -27,12 +27,25 @@
         ]
     },
     "default": {
+        "commonmark": {
+            "hashes": [
+                "sha256:4d3e6853c17c5f92a5bec77343d816254f135e34b8935d0d61f0afc1226c51b7",
+                "sha256:24678b72094398df96312fb927e274ccaf5148f25e47aca9f7fc062693ae7577"
+            ],
+            "version": "==0.7.4"
+        },
         "django": {
             "hashes": [
                 "sha256:7c8ff92285406fb349e765e9ade685eec7271d6f5c3f918e495a74768b765c99",
                 "sha256:dc3b61d054f1bced64628c62025d480f655303aea9f408e5996c339a543b45f0"
             ],
             "version": "==2.0.2"
+        },
+        "future": {
+            "hashes": [
+                "sha256:e39ced1ab767b5936646cedba8bcce582398233d6a627067d4c6a454c90cfedb"
+            ],
+            "version": "==0.16.0"
         },
         "psycopg2-binary": {
             "hashes": [

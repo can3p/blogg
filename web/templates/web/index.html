@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load app_filters %}
 
 {% block content %}
 
@@ -6,8 +7,20 @@
 
 {% if user.is_authenticated %}
 <p> Hello, {{ user.username }}! Want to <a href="{% url 'logout' %}">logout</a>?</p>
+<p> Sure, you can <a href="{% url 'update' %}">make</a> a post</p>
 {% else %}
 <p> Hello, Anonymous! Want to <a href="{% url 'login' %}">login</a>?</p>
 {% endif %}
+
+{% for publication in publications %}
+<hr />
+
+<h2>{{ publication.content.title }}</h2>
+
+<div>
+  {{ publication.content.post|markdownyfy }}
+</div>
+
+{% endfor %}
 
 {% endblock %}

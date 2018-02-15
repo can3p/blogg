@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>New post</h1>
+
+<form method="post" action="{% url 'update' %}">
+  {% csrf_token %}
+  <div>
+    <input name="title" style="width: 100%;" placeholder="Title goes there" />
+  </div>
+  <div>
+    <textarea name="post" rows="30" style="width: 100%"
+      placeholder="Text goes there"></textarea>
+  </div>
+  <div>
+    <input type="submit" value="Press me" />
+  </div>
+</form>
+
+{% endblock %}
+

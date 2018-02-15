@@ -10,6 +10,7 @@ url = "https://pypi.python.org/simple"
 django = "*"
 python-decouple = "*"
 "psycopg2-binary" = "*"
+commonmark = "*"
 
 
 [dev-packages]
