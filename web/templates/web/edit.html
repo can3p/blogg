@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container stripe">
+  <div class="site-heading">
+    <h1 class="site-heading__heading">
+      Edit post
+    </h1>
+  </div>
+</div>
+
+<div class="stripe container">
+  <div class="update-form">
+    <form method="post" action="{% url 'edit' username=publication.author.username publication_id=publication.id %}">
+      {% csrf_token %}
+      <div class="update-form__group">
+        <input name="title" style="width: 100%;"
+        placeholder="Title goes there"
+        value="{{ publication.content.title }}"
+        />
+      </div>
+      <div class="update-form__group">
+        <textarea name="post"
+                  rows="20"
+                  style="width: 100%"
+                  placeholder="Text goes there">{{ publication.content.post }}</textarea>
+      </div>
+      <div class="update-form__group">
+        <input type="submit" value="Press me" />
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
+
+

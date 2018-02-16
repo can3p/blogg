@@ -13,8 +13,7 @@ class Publication(models.Model):
     effective_pub_date = models.DateTimeField('date of the post on the site')
 
     def content(self):
-        # return PublicationContent.objects.get(publication=self).order_by('-inserted_at')[0]
-        return PublicationContent.objects.get(publication=self)
+        return PublicationContent.objects.order_by('-inserted_at').filter(publication=self)[:1][0]
 
 
 class PublicationContent(models.Model):

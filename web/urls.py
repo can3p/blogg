@@ -7,5 +7,6 @@ urlpatterns = [
     path('u/<username>/', views.BlogView.as_view(), name='blog'),
     path('u/<username>/<int:publication_id>',
          views.PublicationView.as_view(), name='publication'),
+    path('edit/<username>/<int:publication_id>',  views.edit, name='edit'),
     path('update', views.update, name='update'),
 ]

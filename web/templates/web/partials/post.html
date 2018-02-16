@@ -7,6 +7,11 @@
   <div class="publication__info">
     {{ publication.effective_pub_date }} by {{ publication.author }}
     <a href="{% url 'publication' username=publication.author.username publication_id=publication.id %}" class="link">Permalink</a>
+    {% if user.is_authenticated %}
+      {% if user.username == publication.author.username %}
+      <a href="{% url 'edit' username=publication.author.username publication_id=publication.id %}" class="link">Edit</a>
+      {% endif %}
+    {% endif %}
   </div>
   <div class="publication__text">
     {{ publication.content.post|markdownyfy }}

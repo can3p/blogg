@@ -87,3 +87,33 @@ def update(request):
         context = {}
 
         return HttpResponse(template.render(context, request))
+
+
+@login_required
+def edit(request, username, publication_id):
+    template = loader.get_template('web/edit.html')
+    context = {}
+
+    try:
+        publication = Publication.objects.filter(author__username=username, effective_pub_date__isnull=False).get(id=publication_id)
+    except ObjectDoesNotExist:
+        raise Http404("Post not found")
+
+    context['publication'] = publication
+
+    if request.method == 'POST':
+        publication.effective_pub_date = timezone.now()
+        publication.save()
+
+        content = PublicationContent()
+        content.publication = publication
+        content.title = request.POST['title']
+        content.post = request.POST['post']
+        content.inserted_at = timezone.now()
+        content.save()
+
+        return HttpResponseRedirect(reverse('publication',
+                                    args=[username, publication_id]))
+    else:
+
+        return HttpResponse(template.render(context, request))
