@@ -90,6 +90,11 @@ DATABASES = {
     }
 }
 
+# livejournal.com xml rpc friendly plain old md5 password hashing
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.UnsaltedMD5PasswordHasher'
+]
+
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
