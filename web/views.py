@@ -9,6 +9,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 
 from .models import Publication, PublicationContent, User
+from .post_api import create_publication, update_publication
 
 
 class IndexView(generic.ListView):
@@ -34,7 +35,7 @@ class BlogView(generic.ListView):
         """Return the last five published questions."""
 
         try:
-            author = User.get(username=self.kwargs['username'])
+            author = User.objects.get(username=self.kwargs['username'])
         except ObjectDoesNotExist:
             raise Http404("Blog not found")
 
@@ -68,18 +69,9 @@ class PublicationView(generic.DetailView):
 @login_required
 def update(request):
     if request.method == 'POST':
-        publication = Publication()
-        publication.author = request.user
-        publication.pub_date = timezone.now()
-        publication.effective_pub_date = timezone.now()
-        publication.save()
-
-        content = PublicationContent()
-        content.publication = publication
-        content.title = request.POST['title']
-        content.post = request.POST['post']
-        content.inserted_at = timezone.now()
-        content.save()
+        create_publication(request.user.username,
+                           request.POST['title'],
+                           request.POST['post'])
 
         return HttpResponseRedirect(reverse('index'))
     else:
@@ -91,8 +83,8 @@ def update(request):
 
 @login_required
 def edit(request, username, publication_id):
-    template = loader.get_template('web/edit.html')
     context = {}
+    template = loader.get_template('web/edit.html')
 
     try:
         publication = Publication.objects.filter(author__username=username, effective_pub_date__isnull=False).get(id=publication_id)
@@ -102,15 +94,9 @@ def edit(request, username, publication_id):
     context['publication'] = publication
 
     if request.method == 'POST':
-        publication.effective_pub_date = timezone.now()
-        publication.save()
-
-        content = PublicationContent()
-        content.publication = publication
-        content.title = request.POST['title']
-        content.post = request.POST['post']
-        content.inserted_at = timezone.now()
-        content.save()
+        update_publication(username, publication.id,
+                           request.POST['title'],
+                           request.POST['post'])
 
         return HttpResponseRedirect(reverse('publication',
                                     args=[username, publication_id]))

@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 from decouple import config
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,6 +26,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
+BASE_URL = config('BASE_URL')
 
 ALLOWED_HOSTS = []
 
@@ -43,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_xmlrpc',
 ]
 
 MIDDLEWARE = [
@@ -112,6 +115,10 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+XMLRPC_METHODS = (('web.xmlrpc.getchallenge', 'LJ.XMLRPC.getchallenge'),
+                  ('web.xmlrpc.postevent', 'LJ.XMLRPC.postevent'),
+                  ('web.xmlrpc.editevent', 'LJ.XMLRPC.editevent'),)
 
 
 # Internationalization
