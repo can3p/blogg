@@ -16,8 +16,8 @@ This project went with on of possible setups. Initial install is neatly outlined
 
 Don't create your own project though, because you already have blogg!
 
-To manage dependencies we will use `pipenv`, because it's closes to sanity. Most guides recommend
-local install, but only system one worked for me
+To manage dependencies we will use `pipenv`, because it's closer to sanity. Most guides recommend
+local install, but only a system one worked for me
 
 ~~~bash
 # ubuntu
