@@ -90,7 +90,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> user = User.objects.create_user('john', 'john.doe@a.com', 'test1234')
 ~~~
 
-## Cl-journal intrgration
+## Cl-journal integration
 
 [cl-journal][cl-journal] is a livejournal client, which can work
 with blogg. Follow instructions from it's home page to get it up
